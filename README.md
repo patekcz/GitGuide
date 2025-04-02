@@ -1,17 +1,48 @@
 #### **Strukturování a psaní commit zpráv**
 
-- **Jednoznačnost:** Každý commit by měl popisovat jednu konkrétní změnu. Rozdělte větší úpravy do menších kroků.
-- **Začátek akcí:** Začínejte zprávu slovem, které označuje typ změny (např. "ADD", "FIX", "UPD").
-- **Stručnost:** Popis by měl být krátký a informativní (doporučuje se do 50 znaků v první větě).
-- **Dodatečný kontext:** Pokud je potřeba, přidejte podrobný popis v další části commit zprávy (oddělte jedním prázdným řádkem).
+Používáme standard [Conventional Commits](https://www.conventionalcommits.org/), který poskytuje jasně definovaný formát zpráv a umožňuje automatické generování changelogů.
 
-_Příklad správné struktury:_
+- **Jednoznačnost:** Každý commit by měl popisovat jednu konkrétní změnu. Rozdělte větší úpravy do menších kroků.
+- **Struktura:** Commit zprávy následují formát:
+  ```
+  <typ>[volitelný scope]: <popis>
+
+  [volitelný detailní popis]
+
+  [volitelné poznámky]
+  ```
+- **Stručnost:** První řádek by měl být krátký a výstižný (do 50 znaků).
+- **Typy commitů:**
+  - **`feat:`** - Nová funkcionalita
+  - **`fix:`** - Oprava chyby
+  - **`docs:`** - Změny v dokumentaci
+  - **`style:`** - Formátování, chybějící středníky atd.
+  - **`refactor:`** - Refaktoring kódu
+  - **`perf:`** - Vylepšení výkonu
+  - **`test:`** - Přidání nebo úprava testů
+  - **`build:`** - Změny build systému nebo závislostí
+  - **`ci:`** - Změny CI konfigurace
+  - **`chore:`** - Ostatní změny
+
+- **Scope:** Volitelně můžete přidat scope v závorkách pro upřesnění části projektu, které se změna týká.
+
+_Příklady správných commit zpráv:_
 
 ```plaintext
-ADD: Implementace nového API pro správu uživatelů
+feat(auth): implementace JWT autentizace
 
-Přidáno API pro vytváření, mazání a aktualizaci uživatelů.
-Zahrnuje testy a dokumentaci.
+Přidání podpory pro JWT tokeny včetně:
+- Generování tokenů
+- Validace tokenů
+- Refresh tokenů
+
+BREAKING CHANGE: Změna formátu autentizačních hlaviček
+```
+
+```plaintext
+fix(db): oprava připojení k MongoDB při startu
+
+Přidáno opakované připojení při selhání inicializace databáze.
 ```
 
 1. **Klonování projektu:** Načtěte projekt lokálně pomocí:
